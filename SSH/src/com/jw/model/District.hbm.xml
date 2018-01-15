@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.jw.model.District" table="district">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="name"></property>
+		<!-- 区市多对一 -->
+		<many-to-one name="city" class="com.jw.model.City" column="city_id" lazy="false"></many-to-one>
+		<!-- 区员工一对多 -->
+		<set name="employees" lazy="false">
+			<key column="district_id"></key>
+			<one-to-many class="com.jw.model.Employee" />
+		</set>
+	</class>
+</hibernate-mapping>

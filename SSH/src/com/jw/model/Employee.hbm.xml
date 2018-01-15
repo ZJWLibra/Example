@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.jw.model.Employee" table="employee">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="name"></property>
+		<property name="sex" column="sex"></property>
+		<property name="age" column="age"></property>
+		<property name="birthday" column="birthday"></property>
+		
+		<many-to-one name="department" class="com.jw.model.Department" column="dep_id" cascade="save-update" lazy="false"></many-to-one>
+		<many-to-one name="province" class="com.jw.model.Province" column="province_id" cascade="save-update" lazy="false"></many-to-one>
+		<many-to-one name="city" class="com.jw.model.City" column="city_id" cascade="save-update" lazy="false"></many-to-one>
+		<many-to-one name="district" class="com.jw.model.District" column="district_id" cascade="save-update" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>
